@@ -1,0 +1,27 @@
+# PR-7 DISK SHEDULING ALGO
+
+class HelloWorld {
+    public static void main(String[] args) {
+        int currentHead = 50;
+        int[] requests = {82,170,43,140,24,16,190};
+        int seekTime = 0;
+       
+        for(int i =0;i<requests.length;i++){
+            if(requests[i] != currentHead){
+                if(currentHead < requests[i]){
+                     seekTime += (currentHead-requests[i]) * -1;
+                }
+                else{
+                    seekTime += (currentHead-requests[i]);
+                }
+                 
+                 currentHead = requests[i];
+            }
+           
+           
+        }
+       
+        System.out.println("Seek Time: "+seekTime);
+    }
+}
+

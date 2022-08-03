@@ -1,0 +1,40 @@
+# PRIORITY SCHEDULING ALGO (PR-9)
+
+process=int(input("Enter the number of processes"))
+processes=[]
+bursttimes=[]
+priorities=[]
+for i in range(process):
+    p=int(input("Enter the number of process"))
+    processes.append(p)
+    bursttime=int(input("Enter the bursttime of process"))
+    bursttimes.append(bursttime)
+    priority=int(input("Enter the priority of process"))
+    priorities.append(priority)
+
+print("The process list is:",processes)
+print("The bursttime list is:",bursttimes)
+print("The priority list is:",priorities)
+
+mapping=dict(zip(bursttimes,priorities))
+sorted_dict=dict(sorted(mapping.items(),key=lambda item: item[1],reverse=True))
+print("The sorted ditionary is",sorted_dict)
+
+bursttimesnew=list(sorted_dict.keys())
+print("The sorted bursttime list is",bursttimesnew)
+
+waittime=0
+print("for process1 waitime time is 0 by default")
+i=0
+waittimenew=[0]
+while(i<(len(bursttimesnew)-1)):
+    waittime=waittime+bursttimesnew[1]
+    waittimenew.append(waittime)
+    print("The process ",i+2,"the waiting time is",waittime)
+    i=i+1
+
+print("The waiting time are",waittimenew)
+turntime=0
+for i in range(len(bursttimesnew)):
+    turntime=turntime+bursttimesnew[i]
+    print("The process",i+1,"has turnaround time is",turntime)
