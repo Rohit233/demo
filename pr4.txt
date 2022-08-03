@@ -12,5 +12,5 @@ sudo apt-get purge <program>
 
 
 tar -cvf tarfileName filename   -(Create tar file) 
-tar -xf ost.tar.gz -C /home/coder/Documents/ostTr/   -(extract tar file)
+tar -xf tarfileName -C folderLocation   -(extract tar file)
 
