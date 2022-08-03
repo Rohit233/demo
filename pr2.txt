@@ -1,0 +1,46 @@
+#PR-2
+
+# Basic Linux command
+
+pwd - show present working directory
+
+cd folderName - change directory to given folderName
+
+ls - list out the content of present directory
+
+cat fileName - list the contents of a file
+
+cp sourceFile destinationFolderPath - copy the content in destinationFolderPath
+
+mv sourceFile destinationFolderPath - move the content in destinationFolderPath
+
+mkdi newFolder - create new Folder
+
+rmdir newFolder - remove folder
+
+touch file.txt - create new file
+
+
+# USER MANAGEMENT
+
+sudo adduser username
+
+sudo passwd -l 'username'
+
+sudo userdel -r 'username'
+
+groupmod "Press Tab key twice"
+
+sudo groupadd mygroup - (create new group)
+
+sudo groupdel projectA
+
+sudo groupmod --new-name projectZ projectA - (group name change)
+
+sudo usermod -a -G GROUPNAME USERNAME  -(add user to a group)
+
+sudo deluser USER GROUPNAME -(Removing a user from Usergroup)
+
+
+
+

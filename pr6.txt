@@ -1,51 +1,10 @@
-# PRODUCER CONSUMER PROBLEM (PR-6)
-import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Producer {
-//    static int[] arr = new int[10];
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        ArrayList arr = new ArrayList<>(10);
-        boolean ch = true;
-        int count = 0;
-        while(ch){
-            System.out.println("Enter your choice");
-            System.out.println(" 1. Produce\n 2. Consume \n 3. Exit");
-            int choice = sc.nextInt();
-
-            if(choice == 1){
-                        if(arr.size() <= 10) {
-                            System.out.println("Enter number in producer");
-                            int produce = sc.nextInt();
-                            arr.add(produce);
-                            System.out.println(arr);
-                        }else{
-                            System.out.println("Producer out of limit");
-                        }
-            }
-
-
-            else if(choice == 2){
-                        if(arr.isEmpty()){
-                            System.out.println("Please add producer first");
-                        }else {
-                            System.out.println("Enter number to remove");
-                            int consume = sc.nextInt();
-                                if (arr.contains(consume)) {
-                                    arr.remove((Integer) consume);
-                                    System.out.println(arr);
-                                } else {
-                                    System.out.println("please add producer first");
-                                }
-                        }
-                }
-
-            else{
-                System.out.println("program executed");
-                ch = false;
-            }
-            }
-        }
-    }
-
+# PR-6
+egrep -c '(vmx|svm)' /proc/cpuinfo
+sudo kvm-ok
+sudo apt install cpu-checker
+sudo kvm-ok
+sudo apt install -y qemu qemu-kvm libvirt-daemon libvirt-clients bridge-utils virt-manager
+sudo systemctl status libvirtd
+sudo systemctl enable --now libvirtd
+lsmod | grep -i kvm

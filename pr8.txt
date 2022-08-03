@@ -1,48 +1,18 @@
-# SSTF (PR-8)
+sudo apt install cron
 
-import java.util. *;
-class HelloWorld {
-    public static void main(String[] args) {
-        ArrayList<Integer> requests = new ArrayList();
-        requests.add(176);
-        requests.add(79);
-        requests.add(34);
-        requests.add(60);
-        requests.add(92);
-        requests.add(11);
-        requests.add(41);
-        requests.add(114);
-        int seekTime = 0;
-        int currentHead = 50;
-        for(int i =0;i<requests.size();i++){
-             int nextRequest = findMinDistRequest(requests, currentHead);
-             seekTime += Math.abs(nextRequest - currentHead);
-             int index = requests.indexOf(currentHead);
-             if(index >= 0){
-                 requests.set(index,-1);   
-             }
-             
-             currentHead = nextRequest;
-             
-        }
-        System.out.println("Seek Time: "+ seekTime);
-    }
-    
-    static int findMinDistRequest(ArrayList<Integer> requests,int currentHead){
-        int minDistRequest = 0;
-        int minDist = Integer.MAX_VALUE;
-        
-        for(int i=0;i< requests.size();i++){
-            if(requests.get(i) != currentHead && requests.get(i) != -1){
-                int dist = Math.abs(requests.get(i) - currentHead);
-                if(dist < minDist){
-                    minDist = dist;
-                    minDistRequest = requests.get(i);
-                }
-            }
-        }
-        return minDistRequest;
-    }
-}
+* * * * * command to executed
+| | | |	|
+| | | | |_____Day of week (0-7)
+| | | |______Month of year (1-12)
+| | |________ Day of month (1-31)		
+| |
+| |_______Hour (0-23)
+|________ Minute (0-59)
 
+
+crontab -e  -(Modify cron tab file)
+
+crontab -l
+
+crontab -r (erase your crontab)
 
