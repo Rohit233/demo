@@ -38,3 +38,102 @@ turntime=0
 for i in range(len(bursttimesnew)):
     turntime=turntime+bursttimesnew[i]
     print("The process",i+1,"has turnaround time is",turntime)
+
+
+__________________________________________________________________________
+JAVA CODE 
+
+import java.util. *;
+ class Process{
+        int burstTime;
+        int priority;
+        double watingTime = 0;
+        double turnAroundTime =0;
+}
+public class Main
+{
+   
+    static double avTAT = 0;
+    static double avWT = 0;
+    static ArrayList<Process> sortAccordingToPriority(ArrayList<Process> listProcess){
+        for(int i =0;i<listProcess.size();i++){
+            for(int j =0;j<listProcess.size()-1;j++){
+                Process temp;
+                if(listProcess.get(i).priority > listProcess.get(j).priority){
+                    temp = listProcess.get(i);
+                    listProcess.set(i,listProcess.get(j));
+                    listProcess.set(j,temp);
+                }
+            }
+        }
+        return listProcess;
+    }
+    
+    static ArrayList<Process>  findTurnAroundTime(ArrayList<Process> listProcess){
+        for(int i = 0;i<listProcess.size();i++){
+            if(i == 0){
+                listProcess.get(i).turnAroundTime = listProcess.get(i).burstTime;
+            }
+            else{
+                listProcess.get(i).turnAroundTime = listProcess.get(i).burstTime + listProcess.get(i-1).turnAroundTime;
+            }
+        }
+        return listProcess;
+    }
+    
+    static ArrayList<Process> findWatingTime(ArrayList<Process> listProcess){
+         for(int i = 0;i<listProcess.size();i++){
+            if(i == 0){
+                listProcess.get(i).watingTime = 0;
+            }
+            else{
+                avWT += listProcess.get(i-1).burstTime;
+                listProcess.get(i).watingTime += avWT;   
+            }
+        }
+        return listProcess;
+    }
+
+    
+	public static void main(String[] args) {
+	    System.out.println("Enter number of process");
+	    Scanner scanner = new Scanner(System.in);
+	    int n = scanner.nextInt();
+		ArrayList<Process> listProcess = new ArrayList();
+	    for (int i=0;i<n;i++){
+	      System.out.println("Enter burstTime of process");
+	      Process newProcess = new Process();
+	      newProcess.burstTime = scanner.nextInt();
+	      System.out.println("Enter Priority of process");
+	      newProcess.priority = scanner.nextInt();
+	      listProcess.add(newProcess);
+	    }
+	    
+	   listProcess = sortAccordingToPriority(listProcess);
+	    
+	    
+	   listProcess = findTurnAroundTime(listProcess);
+	   listProcess = findWatingTime(listProcess);
+	   avWT = 0;
+	   for(int i =0;i<listProcess.size();i++){
+	         avTAT += listProcess.get(i).turnAroundTime;
+	         
+	    } 
+	   
+	   for(int i =0;i<listProcess.size();i++){
+	         
+	        avWT += listProcess.get(i).watingTime;
+	    } 
+	   
+	   
+	   System.out.println("Average TurnaroundTime: " + avTAT/listProcess.size());
+	   
+	   System.out.println("Average watingTime: "+avWT/listProcess.size());
+	    
+
+	    
+	}
+}
+
+
+
