@@ -10,3 +10,9 @@ ping 192.168.0.103 -(Test connectivity to another node)
 traceroute ipaddress -(is used for tracing the full path from your local system to another network)
 
 netstat - (is used for getting useful information)
+
+host www.google.com
+
+hostname
+
+whois google.com
