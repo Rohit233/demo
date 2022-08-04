@@ -15,4 +15,8 @@ host www.google.com
 
 hostname
 
+hostname -i
+
+hostname -I
+
 whois google.com
