@@ -1,0 +1,26 @@
+  CREATE TABLE employee
+(
+id INT PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+gender INT NOT NULL,
+salary INT NOT NULL,
+department VARCHAR(50) NOT NULL  
+);
+INSERT INTO employee VALUES(1,'David','Male',5000,'Sales');
+INSERT INTO employee VALUES(2,'Jim','Female',6000,'HR');
+INSERT INTO employee VALUES(3,'Kate','Female',7500,'IT');
+INSERT INTO employee VALUES(4,'Will','Male',6500,'Marketing');
+INSERT INTO employee VALUES(5,'Shane','Female',5500,'Finance');
+INSERT INTO employee VALUES(6,'Shed','male',8000,'Sales');
+INSERT INTO employee VALUES(7,'Vik','Female',7200,'HR');
+INSERT INTO employee VALUES(8,'Vince','male',6600,'IT');
+INSERT INTO employee VALUES(9,'Lane','male',5400,'Marketing');
+INSERT INTO employee VALUES(10,'Laura','Female',6400,'Finance');
+INSERT INTO employee VALUES(11,'Mac','male',5700,'HR');
+INSERT INTO employee VALUES(12,'Pat','male',6000,'IT');
+SELECT department, sum(salary) as Salary_Sum
+From employee
+GROUP BY department;
+SELECT coalesce (department,'All Departments') AS Department,
+sum(salary) as Salary_Sum
+FROM employee

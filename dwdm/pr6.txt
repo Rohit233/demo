@@ -1,0 +1,95 @@
+# K-means clustering (PR-7)
+
+import math
+
+x = [1,3,6,7,6,8,9,2,4,4,3,2,1,5,6]
+y = [1,2,1,3,4,2,6,7,8,4,6,3,2,5,2]
+
+# plt.show()
+
+c1 = [6,1]
+c2 = [8,2]
+
+centroid1 = []
+centroid2 = []
+
+list1 = []
+list2 = []
+
+distanceListFromC1 = []
+distanceListFromC2 = []
+
+
+
+while True:
+
+
+# finding distance between data-points and center
+  for i in range(0,len(x)):
+      distanceListFromC1.append(math.dist((x[i], y[i]), c1))
+  for i in range(0,len(x)):
+      distanceListFromC2.append(math.dist((x[i], y[i]), c2))
+
+#assigning data points to centroids based on distance
+  for i in range(0,len(distanceListFromC1)):
+    if (distanceListFromC1[i] <= distanceListFromC2[i]):
+        list1.append([x[i], y[i]])
+    else:
+        list2.append([x[i], y[i]])
+
+    # print(list1)
+    # print(list2)
+
+# calculating mean of x for c1
+  c1mean_x = 0
+  for i in list1:
+     c1mean_x += i[0]
+  c1mean_x /= len(list1)
+    # print(c1mean_x)
+
+    # calculating mean of y for c1
+  c1mean_y = 0
+  for i in list1:
+       c1mean_y += i[-1]
+    # print(c1mean_y)
+
+  c1mean_y /= len(list1)
+    # print(c1mean_y)
+
+  centroid1 = [c1mean_x, c1mean_y]
+    # print(centroid1)
+
+# calculating mean of x for c2
+  c2mean_x = 0
+  for i in list2:
+        c2mean_x += i[0]
+
+  c2mean_x /= len(list2)
+    # print(c2mean_x)
+
+# calculating mean of y for c2
+  c2mean_y = 0
+  for i in list2:
+        c2mean_y += i[-1]
+    # print(c2mean_y)
+
+  c2mean_y /= len(list2)
+    # print(c2mean_y)
+
+  centroid2 = [c2mean_x, c2mean_y]
+    # print(centroid2)
+
+#checking if previous centroids match with new centroids
+  if c1 == centroid1 and c2 == centroid2:
+        break
+  else:
+        c1 = centroid1
+        c2 = centroid2
+        list1 = []
+        list2 = []
+        distanceListFromC1 = []
+        distanceListFromC2 = []
+
+print("After k-means clustering adjusted centroids are:")
+print(c1)
+print(c2)
